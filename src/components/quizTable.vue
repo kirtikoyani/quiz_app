@@ -12,26 +12,6 @@
         </div>
     </div>
 
-    <!-- <table class="table">
-        <tr>
-            <th>Id</th>
-            <th>DifficultyLevel</th>
-            <th>QuestionTitle</th>
-            <th>createdBy</th>
-            <th>Actions</th>
-        </tr>
-        <tr v-for="data of searchFun()" :key="data">
-            <td>
-                <router-link :to="`start-quiz/${data.id}`">{{ data.id }}</router-link>
-            </td>
-            <td>{{ data.difficultyLevel }}</td>
-            <td>{{ data.quizTopic }}</td>
-            <td>
-                <router-link :to="`userprofle/${data.createdBy.id}`">{{ data.createdBy.name }}</router-link>
-            </td>
-            <td><button class="btn-delete" @click="deletedata(data)">Delete</button></td>
-        </tr>
-    </table> -->
     <div class="user_table">
         <div v-for="data of searchFun()" :key="data">
             <div class="user_detail">

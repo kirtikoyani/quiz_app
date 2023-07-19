@@ -20,22 +20,26 @@
                 <h6 v-for="t in q.selectedRelevantTopic" :key="t" class="topic_h2 center">{{ t }}</h6>
             </div>
         </router-link>
+        <div>
+            <router-link class="btn-adduser" :to="`/editquiz/${q.id}`">Edit</router-link>
+            <button @click="deletedata(q)" class="delete_btn">Delete</button>
+        </div>
     </div>
 </div>
 <h3 class="center">My attendQuizes</h3>
 <div>
-<div v-for="q in attendQuiz" :key="q">
-    <div v-for="s in score" :key="s.id">
-        <div class="p-maindiv" v-if="q.id==s.id">
-            <div class="product">
-            <h3>
-                {{ q.quizTopic }}
-            </h3>
-            <h4>score : {{ s.score }}/{{ q.questions.length }}</h4>
-        </div>
+    <div v-for="q in attendQuiz" :key="q">
+        <div v-for="s in score" :key="s.id">
+            <div class="p-maindiv" v-if="q.id==s.id">
+                <div class="product">
+                    <h3>
+                        {{ q.quizTopic }}
+                    </h3>
+                    <h4>score : {{ s.score }}/{{ q.questions.length }}</h4>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
 </template>
 
@@ -74,6 +78,15 @@ export default {
             });
             this.score = score;
             return [this.info, this.userQuiz, this.attendQuiz];
+        },
+        deletedata(data) {
+            if (confirm("Are you sure to delete the Quiz") == true) {
+                const index = this.datas.findIndex(i => i.id === data.id);
+                this.datas.splice(index, 1);
+                console.log(this.datas);
+                localStorage.setItem('quizData', JSON.stringify(this.datas));
+                this.getdatasFromStorage();
+            }
         },
 
     },

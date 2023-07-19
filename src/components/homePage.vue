@@ -57,9 +57,9 @@
                 <div class="course-info">
                     <div class="progress-container">
                         <!-- <div class="progress"></div> -->
-                        <progress class="progress" id="file" :value="`${data.attendees.length}`" max="10">{{ data.attendees.length }}</progress>
+                        <progress class="progress" id="file" :value="`${data.attendees?.length}`" max="10">{{ data.attendees?.length }}</progress>
                         <span class="progress-text">
-                            attendees {{ data.attendees.length }}
+                            attendees {{ data.attendees?.length }}
                         </span>
                     </div>
                     <h6>Questions {{ data.questions.length }}</h6>

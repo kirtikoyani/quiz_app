@@ -32,7 +32,7 @@
             <div v-if="showInfo === data.id" class="user-details">
                 <div class="create">
                     <h5 class="create_ele">My created Quiz</h5>
-                    <div v-for="q in userQuiz" :key="q.id">
+                    <div class="create_ele" v-for="q in userQuiz" :key="q.id">
                         <div class="sub_ele" v-if="q.createdBy.id==data.id">
                             {{q.quizTopic}}
                         </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="attend">
                     <h5 class="attend_ele">My attented Quiz</h5>
-                    <div v-for="q in userQuiz" :key="q.id">
+                    <div class="attend_ele" v-for="q in userQuiz" :key="q.id">
                         <div class="sub_ele" v-for="s in data.quizzes" :key="s.id">
                             <div v-if="q.id==s.id">{{ q.quizTopic}} score: {{ s.score }}</div>
                         </div>
@@ -236,13 +236,15 @@ export default {
 }
 
 .create,
-.attend,
-.sub_ele {
+.attend {
     display: flex;
 }
+.sub_ele{
+flex:1;
+}
 
-/* .attend_ele,
+.attend_ele,
 .create_ele {
     flex: 1;
-} */
+}
 </style>
